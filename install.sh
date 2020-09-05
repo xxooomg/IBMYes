@@ -39,8 +39,8 @@ EOF
                     ]
                 },
                 "streamSettings": {
-                    "network":"ws",
-                    "wsSettings": {
+                    "network":"tcp",
+                    "tcpSettings": {
                         "path": ""
                     }
                 }
@@ -100,16 +100,16 @@ install(){
     ibmcloud cf push
     echo "安装完成。"
     echo "生成的随机 UUID：${UUID}"
-    echo "生成的随机 WebSocket路径：${WSPATH}"
+  # echo "生成的随机 WebSocket路径：${WSPATH}"
     VMESSCODE=$(base64 -w 0 << EOF
     {
       "v": "2",
-      "ps": "ibmyes",
-      "add": "ibmyes.us-south.cf.appdomain.cloud",
+      "ps": "kisswall",
+      "add": "kisswall.us-south.cf.appdomain.cloud",
       "port": "443",
       "id": "${UUID}",
       "aid": "4",
-      "net": "ws",
+      "net": "tcp",
       "type": "none",
       "host": "",
       "path": "${WSPATH}",
